@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Web Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <main class="calculator">
+
+        <!-- Calculator heading and three-dot menu -->
+        <header>
+            <div>
+                <p class="eyebrow">WEB ENGINEERING - LAB 07</p>
+                <h1>Calculator</h1>
+            </div>
+
+            <div class="navigation">
+                <button
+                    id="menuButton"
+                    class="menu-button"
+                    aria-label="More options"
+                    aria-expanded="false"
+                    aria-controls="subMenu">
+                    ...
+                </button>
+
+                <nav id="subMenu" aria-label="Calculator options" hidden>
+                    <button data-mode="basic">
+                        Basic Calculator
+                    </button>
+
+                    <button data-mode="scientific">
+                        Scientific Mode
+                    </button>
+
+                    <button data-mode="units">
+                        Unit Conversion
+                    </button>
+
+                    <button data-mode="currency">
+                        Currency Conversion
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <p id="modeLabel" class="mode-label">Basic Calculator</p>
+
+        <!-- Basic and scientific calculator -->
+        <section id="calculatorPanel" aria-label="Calculator">
+
+            <label for="display">Expression</label>
+
+            <input
+                type="text"
+                id="display"
+                value="0"
+                inputmode="decimal"
+                autocomplete="off"
+                spellcheck="false">
+
+            <p id="calculatorHint" class="hint">
+                Enter an expression or use the buttons below.
+            </p>
+
+            <!-- These buttons appear in scientific mode -->
+            <div id="scientificKeys" class="scientific-keys" hidden>
+                <button data-function="sqrt">√x</button>
+                <button data-function="square">x²</button>
+                <button data-value="^">xʸ</button>
+
+                <button data-function="sin">sin</button>
+                <button data-function="cos">cos</button>
+                <button data-function="tan">tan</button>
+            </div>
+
+            <p id="angleHint" class="hint" hidden>
+                Trigonometric functions use degrees.
+                Scientific functions apply to the whole expression.
+            </p>
+
+            <!-- Calculator buttons -->
+            <div id="keypad" class="keypad">
+
+                <!-- First row -->
+                <button data-action="clear" class="utility">AC</button>
+                <button data-value="(" class="utility">(</button>
+                <button data-value=")" class="utility">)</button>
+                <button data-action="delete" class="utility">⌫</button>
+
+                <!-- Second row -->
+                <button data-value="7">7</button>
+                <button data-value="8">8</button>
+                <button data-value="9">9</button>
+                <button data-value="/" class="operator">÷</button>
+
+                <!-- Third row -->
+                <button data-value="4">4</button>
+                <button data-value="5">5</button>
+                <button data-value="6">6</button>
+                <button data-value="*" class="operator">×</button>
+
+                <!-- Fourth row -->
+                <button data-value="1">1</button>
+                <button data-value="2">2</button>
+                <button data-value="3">3</button>
+                <button data-value="-" class="operator">−</button>
+
+                <!-- Fifth row -->
+                <button data-value="0">0</button>
+                <button data-value=".">.</button>
+                <button data-action="equals" class="equals">=</button>
+                <button data-value="+" class="operator">+</button>
+
+            </div>
+        </section>
+
+        <!-- Unit converter -->
+        <section id="unitsPanel" aria-label="Unit conversion" hidden>
+
+            <form id="unitForm">
+
+                <label for="unitType">Measurement type</label>
+
+                <select id="unitType">
+                    <option value="length">Length</option>
+                    <option value="weight">Weight</option>
+                    <option value="temperature">Temperature</option>
+                </select>
+
+                <label for="unitAmount">Value to convert</label>
+
+                <input
+                    type="number"
+                    id="unitAmount"
+                    value="1"
+                    step="any"
+                    required>
+
+                <div class="two-columns">
+                    <div>
+                        <label for="unitFrom">From</label>
+
+                        <!-- JavaScript adds the available units -->
+                        <select id="unitFrom"></select>
+                    </div>
+
+                    <div>
+                        <label for="unitTo">To</label>
+                        <select id="unitTo"></select>
+                    </div>
+                </div>
+
+                <button type="submit" class="primary">
+                    Convert units
+                </button>
+
+            </form>
+
+            <output
+                id="unitResult"
+                class="result"
+                aria-live="polite">
+            </output>
+
+        </section>
+
+        <!-- Currency converter -->
+        <section id="currencyPanel" aria-label="Currency conversion" hidden>
+
+            <p class="hint">
+                Enter an exchange rate manually.
+                This calculator does not load live rates.
+            </p>
+
+            <form id="currencyForm">
+
+                <label for="currencyAmount">Amount</label>
+
+                <input
+                    type="number"
+                    id="currencyAmount"
+                    value="1"
+                    min="0"
+                    step="any"
+                    required>
+
+                <div class="two-columns">
+                    <div>
+                        <label for="currencyFrom">From</label>
+
+                        <select id="currencyFrom">
+                            <option value="USD">USD</option>
+                            <option value="PKR">PKR</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="JPY">JPY</option>
+                            <option value="AED">AED</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="currencyTo">To</label>
+
+                        <select id="currencyTo">
+                            <option value="PKR">PKR</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="JPY">JPY</option>
+                            <option value="AED">AED</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label id="rateLabel" for="exchangeRate">
+                    Exchange rate: 1 USD equals how many PKR?
+                </label>
+
+                <input
+                    type="number"
+                    id="exchangeRate"
+                    min="0"
+                    step="any"
+                    placeholder="Enter a positive rate"
+                    required>
+
+                <button type="submit" class="primary">
+                    Convert currency
+                </button>
+
+            </form>
+
+            <output
+                id="currencyResult"
+                class="result"
+                aria-live="polite">
+            </output>
+
+        </section>
+
+        <!-- JavaScript displays error messages here -->
+        <p id="message" role="status" aria-live="polite"></p>
+
+        <footer>
+            Built with HTML, CSS and JavaScript
+        </footer>
+
+    </main>
+
+</body>
+</html>

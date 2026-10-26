@@ -1,0 +1,33 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; min-height: 100vh; padding: 40px 16px; display: grid; place-items: center; background: #edf2f7; color: #172239; font-family: Arial, sans-serif; }
+.calculator { width: 100%; max-width: 430px; padding: 26px; background: white; border: 1px solid #dce3ed; border-radius: 22px; box-shadow: 0 16px 45px #17223912; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+h1 { margin: 6px 0; font-size: 29px; }
+.eyebrow { margin: 0; font-size: 10px; font-weight: bold; letter-spacing: 1.2px; color: #53627a; }
+.navigation { position: relative; }
+button, input, select { font: inherit; }
+button { border: none; border-radius: 11px; cursor: pointer; background: #edf1f7; color: #172239; min-height: 49px; }
+button:hover { filter: brightness(.94); }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #80a9ff; outline-offset: 2px; }
+.menu-button { width: 43px; min-height: 43px; font-size: 26px; }
+nav { position: absolute; right: 0; top: 50px; z-index: 2; width: 220px; padding: 8px; background: white; border: 1px solid #dce3ed; border-radius: 12px; box-shadow: 0 10px 30px #17223926; }
+nav button { display: block; width: 100%; padding: 12px; text-align: left; background: white; font-size: 14px; }
+.mode-label { color: #325cb5; font-size: 13px; font-weight: bold; margin: 22px 0 17px; }
+label { display: block; margin: 15px 0 7px; font-size: 13px; font-weight: bold; }
+input, select { width: 100%; border: 1px solid #cbd5e3; border-radius: 10px; padding: 12px; background: #fbfcfe; color: #172239; min-width: 0; }
+#display { font-size: 28px; text-align: right; padding: 19px 12px; }
+.hint { font-size: 12px; line-height: 1.6; color: #53627a; }
+.keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-top: 18px; }
+.keypad button { font-size: 20px; min-height: 55px; }
+.keypad .utility { background: #e5ebf5; font-size: 17px; }
+.operator { background: #e0eaff; color: #244da5; }
+.equals, .primary { background: #305dc1; color: white; }
+.scientific-keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+.scientific-keys button { background: #e6f2ee; color: #1e6754; }
+.two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.primary { width: 100%; margin-top: 20px; font-weight: bold; }
+.result { display: block; margin-top: 18px; font-size: 18px; line-height: 1.5; overflow-wrap: anywhere; color: #1e6754; }
+#message { color: #a52a32; font-size: 13px; line-height: 1.5; }
+footer { border-top: 1px solid #e7ecf3; margin-top: 22px; padding-top: 16px; text-align: center; color: #64728a; font-size: 11px; }
+@media (max-width: 360px) { .calculator { padding: 18px; } body { padding: 16px 10px; } }
